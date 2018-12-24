@@ -1,12 +1,8 @@
-<h1>Home#index</h1>
-
-
 <% if user_signed_in? %>
-
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<%= render 'layouts/user-header' %>
 
 <% else %>
-  <p><%= link_to 'Login', new_user_session_path %></p>
-  <p><%= link_to 'Login with facebook', user_facebook_omniauth_authorize_path %>
-  <p><%= link_to 'Sign up', new_user_session_path %></p>
+<%= render 'layouts/general-header'  %>
+
 <% end %>
+<%= render 'layouts/alert' %>
