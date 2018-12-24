@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_12_24_120837) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "facebook_id"
+    t.string "twitter_id"
+    t.string "linkedin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
