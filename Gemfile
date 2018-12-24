@@ -28,10 +28,18 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# for auth
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'bootstrap'
+gem 'jquery-rails'
+gem 'simple_form'
+gem 'popper_js'
+gem 'tether-rails'
+gem 'execjs'
+gem 'mini_racer'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
