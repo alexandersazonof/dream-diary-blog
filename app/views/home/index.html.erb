@@ -1,4 +1,7 @@
-<h1>Home#index</h1>
+<% if user_signed_in? %>
+<%= render 'layouts/user-header' %>
 
+<% else %>
+<%= render 'layouts/general-header'  %>
 
-<p> <%= link_to 'Sign in', new_user_session_path %>  </p>
+<% end %>
