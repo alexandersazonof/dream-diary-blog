@@ -9,7 +9,7 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <a class="nav-link" href="">My posts</a>
+          <%= link_to "My posts", show_path, :class => "nav-link" %>
         </li>
       <li class="nav-item">
           <%= link_to "New post", new_post_path, :class => "nav-link" %>

@@ -19,6 +19,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    user_id = session[:user_id]
+
+    if user_id != get_params
+      
+    end
   end
 
   # POST /posts
@@ -62,6 +67,8 @@ class PostsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -71,5 +78,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:name, :content)
+    end
+
+    def get_params
+      params.require(:get).permit(:id)
     end
 end

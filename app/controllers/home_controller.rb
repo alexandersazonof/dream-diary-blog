@@ -11,4 +11,9 @@ class HomeController < ApplicationController
 
   def about
   end
+
+  def show
+    user_id = session[:user_id]
+    @my_posts = Post.where( ["user_id = ?", user_id])
+  end
 end

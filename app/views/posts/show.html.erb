@@ -1,27 +1,26 @@
-<% if user_signed_in? %>
-<%= render 'layouts/user-header' %>
+<%= render 'home/header' %>
 
-<% else %>
-<%= render 'layouts/general-header'  %>
+<div class="contrainer">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="form-group">
+        <h1><%= @post.name %></h1>
+        <p class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
+        <%= link_to User.find(@post.user_id).username , post_path(@post.id), :class => "text-secondary" %></p>
 
-<% end %>
+      </div>
+    </div>
 
-<p id="notice"><%= notice %></p>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="form-group">
+      <%= image_tag("example.jpg", :width => "960", :height => "640" ) %>
+    </div>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="form-group">
 
+    <%=raw @post.content %>
+    </div>
+  </div>
 
-  <strong>Content:</strong>
-  <%= @post.content %>
-
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', root_path %>
+</div>

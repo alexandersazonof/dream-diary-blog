@@ -1,18 +1,21 @@
-
 <%= render 'home/header' %>
 
-<div class="container">
+<% if !user_signed_in? %>
+  <% controller.redirect_to root_path %>
 
+<% end %>
+<div class="container">
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-          <h1 class="my-4">Dream Blog
+          <h1 class="my-4">My posts
           </h1>
 
-<% if @feed_items.any? %>
-    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+<% if @my_posts.any? %>
+    <%= render partial: 'shared/feed_item', collection: @my_posts %>
 <% end %>
+
 
     <!-- Pagination -->
               <ul class="pagination justify-content-center mb-4">
