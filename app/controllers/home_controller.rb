@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 
 
   def index
+    @feed_items = Post.all
   end
 
   def about

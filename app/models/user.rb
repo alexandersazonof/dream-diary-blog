@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  has_many :posts, dependent: :destroy
   attr_accessor :login
 
   # Include default devise modules. Others available are:
@@ -50,6 +51,9 @@ class User < ApplicationRecord
   end
 
 
+  def feed
+    posts
+  end
 
 
 end
