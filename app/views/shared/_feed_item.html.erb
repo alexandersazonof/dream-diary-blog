@@ -2,7 +2,7 @@
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title"><%= feed_item.name %></h2>
-              <%=raw feed_item.content %>
+              <%=raw truncate(feed_item.content.html_safe, :length => 40 ) %>
               <%= link_to "Read more " , post_path(feed_item.id), :class => "btn btn-primary" %>
             </div>
             <div class="card-footer text-muted">

@@ -10,8 +10,8 @@
           <h1 class="my-4">Dream Blog
           </h1>
 
-<% if @feed_items.any? %>
-    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+<% if @posts.any? %>
+    <%= render partial: 'shared/feed_item', collection: @posts %>
 <% end %>
 
     <!-- Pagination -->
@@ -22,8 +22,10 @@
                 <li class="page-item disabled">
                   <a class="page-link" href="#">Newer &rarr;</a>
                 </li>
+                <%= will_paginate @posts %>
               </ul>
   </div>
+
 
   <!-- Sidebar Widgets Column -->
         <div class="col-md-4">

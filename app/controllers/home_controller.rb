@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
 
   def index
-    @feed_items = Post.all
+    @posts = Post.paginate(:page => params[:page], :per_page => 5)
   end
 
   def about
