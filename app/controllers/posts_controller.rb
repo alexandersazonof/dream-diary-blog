@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    authorize @posts
   end
 
   # GET /posts/1
@@ -15,15 +16,11 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    authorize @post
   end
 
   # GET /posts/1/edit
   def edit
-    user_id = session[:user_id]
-
-    if user_id != get_params
-      
-    end
   end
 
   # POST /posts
@@ -31,6 +28,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = session[:user_id]
+    authorize @post
+
 
     respond_to do |format|
       if @post.save
@@ -80,7 +79,4 @@ class PostsController < ApplicationController
       params.require(:post).permit(:name, :content)
     end
 
-    def get_params
-      params.require(:get).permit(:id)
-    end
 end
