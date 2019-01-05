@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require jquery_ujs
 //= require popper
@@ -22,4 +21,5 @@
 //= require content/body
 //= require content/text
 //= require chosen-jquery
-*= require bootstrap-tagsinput
+//= require bootstrap-tagsinput
+//= require_tree .

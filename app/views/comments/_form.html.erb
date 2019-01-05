@@ -1,11 +1,9 @@
 <%= form_for([@post, @post.comments.build]) do | f | %>
-  <p>
-    <%= f.label :body%><br>
-    <%= f.text_area :body %>
-  </p>
+<div class="form-group">
+    <%= f.label :comment%><br>
+    <%= f.text_area :body, :class => "form-control", :rows => "3" %>
   <br>
+  <%= f.submit %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+</div>
 <% end %>

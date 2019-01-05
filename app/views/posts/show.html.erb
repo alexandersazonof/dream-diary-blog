@@ -24,9 +24,21 @@
     </div>
   </div>
 
-  <h2> <%= @post.comments.count %> Comments </h2>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <div class="container">
+  	<h2 class="text-center"><%= @post.comments.count %> Comments</h2>
     <%= render @post.comments %>
-    <h3> Add comment</h3>
-    <%= render "comments/form" %>
+
+    <div class="card-body">
+
+      <h3> Add comment</h3>
+      <%= render "comments/form" %>
+  </div>
+
+
+</div>
+
+
 
 </div>
