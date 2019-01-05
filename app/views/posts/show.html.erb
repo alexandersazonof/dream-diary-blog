@@ -24,4 +24,9 @@
     </div>
   </div>
 
+  <h2> <%= @post.comments.count %> Comments </h2>
+    <%= render @post.comments %>
+    <h3> Add comment</h3>
+    <%= render "comments/form" %>
+
 </div>
