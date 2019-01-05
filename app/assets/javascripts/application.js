@@ -19,7 +19,6 @@
 //= require tether
 //= require bootstrap
 //= require content/body
-//= require content/text
 //= require chosen-jquery
 //= require bootstrap-tagsinput
 //= require_tree .
