@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/show', to: 'home#show', as: 'show'
+  get '/search', to: 'home#search', as: 'search'
 
   resources :posts do
     resources :comments
