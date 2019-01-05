@@ -27,6 +27,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.tag_list.add(@tags[:tag_list].split)
+    @post.save
     @post.user_id = session[:user_id]
     authorize @post
 
@@ -47,6 +49,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        @post.tag_list.add(@tags[:tag_list].split)
+        @post.save
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -76,6 +80,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+      @tags = params.require(:post).permit(:tag_list)
       params.require(:post).permit(:name, :content)
     end
 

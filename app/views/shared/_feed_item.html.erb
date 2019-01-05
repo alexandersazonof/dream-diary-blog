@@ -2,7 +2,10 @@
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title"><%= feed_item.name %></h2>
-              <%=raw truncate(feed_item.content.html_safe, :length => 40 ) %>
+              <% feed_item.tag_list.to_s.split.each do |tag| %>
+                <%= link_to tag,"http://localhost:3000?tag="+tag , :name => "tag", :class => "badge badge-success" %>
+              <% end %>
+              <br> <br>
               <%= link_to "Read more " , post_path(feed_item.id), :class => "btn btn-primary" %>
             </div>
             <div class="card-footer text-muted">

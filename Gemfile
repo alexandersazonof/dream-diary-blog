@@ -30,7 +30,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'bootstrap-tagsinput-rails'
+
+gem 'acts-as-taggable-on'
 # for auth
 gem 'devise'
 gem 'omniauth'
@@ -38,6 +41,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 
+gem 'chosen-rails'
+gem 'rails-ujs'
+gem 'activestorage'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'simple_form'
