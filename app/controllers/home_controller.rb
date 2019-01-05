@@ -6,10 +6,11 @@ class HomeController < ApplicationController
 
 
   def index
-
     @popular_tags = ActsAsTaggableOn::Tag.most_used(6)
     if params[:tag].present?
       @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
+    elsif params[:sort].present?
+      @posts = sort_params(params[:sort]).paginate(:page => params[:page], :per_page => 5)
     else
       @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
@@ -34,4 +35,16 @@ class HomeController < ApplicationController
       @results = Post.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 5)
     end
   end
+
+  private
+  def sort_params(value)
+    if value.eql? "author"
+      @posts = Post.order('created_at ASC').reverse_order
+    elsif value.eql? "date"
+      @posts = Post.order('created_at ASC').reverse_order
+    else
+      @posts = Post.order('created_at ASC').reverse_order
+    end
+  end
+
 end

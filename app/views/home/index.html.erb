@@ -1,13 +1,12 @@
 
 <%= render 'home/header' %>
 <div class="container">
-
       <div class="row">
-        <!-- Blog Entries Column -->
         <div class="col-md-8">
+          <h1 class="my-4">Dream Blog</h1>
 
-          <h1 class="my-4">Dream Blog
-          </h1>
+          <%= render partial: 'sort' %>
+
 
 <% if @posts.any? %>
     <%= render partial: 'shared/feed_item', collection: @posts %>
