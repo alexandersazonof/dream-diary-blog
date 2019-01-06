@@ -2,10 +2,18 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  mount_uploader :icon, ImageUploader
+  validates_processing_of :icon
+  validate :image_size_validation
+
   attr_accessor :login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+
+
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9]*\z/}
 
@@ -56,5 +64,10 @@ class User < ApplicationRecord
     posts
   end
 
+  private
+
+    def image_size_validation
+      errors[:icon] << "should be less than 500KB" if image.size > 0.5.megabytes
+    end
 
 end

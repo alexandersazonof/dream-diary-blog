@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   ## Private only
   #
   # before_action :authenticate_user:, only: [:private]
+  helper_method :sort_direction
 
 
   def index
@@ -12,7 +13,7 @@ class HomeController < ApplicationController
     elsif params[:sort].present?
       @posts = sort_params(params[:sort]).paginate(:page => params[:page], :per_page => 5)
     else
-      @posts = Post.paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.where(vision: true).paginate(:page => params[:page], :per_page => 5)
     end
   end
 
@@ -22,7 +23,7 @@ class HomeController < ApplicationController
   def show
     @popular_tags = ActsAsTaggableOn::Tag.most_used(6)
     user_id = session[:user_id]
-    @my_posts = Post.where( ["user_id = ?", user_id])
+    @my_posts = Post.where(["user_id = ?", user_id])
   end
 
   def search
@@ -38,13 +39,17 @@ class HomeController < ApplicationController
 
   private
   def sort_params(value)
-    if value.eql? "author"
-      @posts = Post.order('created_at ASC').reverse_order
-    elsif value.eql? "date"
-      @posts = Post.order('created_at ASC').reverse_order
+    if value == "author"
+      @posts = Post.all.order('name ASC')
+    elsif value == "date"
+      @posts = Post.all.order('created_at #{sort_direction}')
     else
       @posts = Post.order('created_at ASC').reverse_order
     end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end

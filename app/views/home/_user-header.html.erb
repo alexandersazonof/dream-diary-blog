@@ -20,7 +20,8 @@
     </ul>
 
     <span class="navbar-text">
-     <%= link_to "Welcome " + current_user.username  , edit_user_registration_path %>
+      <%= image_tag("user.png", :width => "30", :height => "30") %>
+     <%= link_to current_user.username  , edit_user_registration_path %>
    </span>
   </div>
 </nav>

@@ -7,7 +7,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    false
+    user.present? && user.id == article.user_id
   end
 
   def create?

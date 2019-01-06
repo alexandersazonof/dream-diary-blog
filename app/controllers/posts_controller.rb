@@ -21,6 +21,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    authorize @post
   end
 
   # POST /posts
@@ -33,6 +34,7 @@ class PostsController < ApplicationController
     number = rand(1000).to_s
     @post.url_mini = "https://picsum.photos/750/300/?image="+number ;
     @post.url = "https://picsum.photos/960/640/?image="+number ;
+    @post.vision = @vision[:vision] == 'Public' ? true : false
     authorize @post
 
 
@@ -66,6 +68,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    authorize @post
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
@@ -84,6 +87,7 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       @tags = params.require(:post).permit(:tag_list)
+      @vision = params.require(:post).permit(:vision)
       params.require(:post).permit(:name, :content)
     end
 
