@@ -35,6 +35,8 @@ gem 'will_paginate-bootstrap'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'octicons_helper'
+
 gem 'bootstrap-tagsinput-rails'
 gem 'tagsinput-rails-revisited', github: 'andrey-str/tagsinput-rails-revisited'
 
