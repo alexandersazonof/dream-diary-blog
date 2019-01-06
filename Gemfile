@@ -32,6 +32,8 @@ gem 'faker'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
+gem 'carrierwave'
+
 gem 'bootstrap-tagsinput-rails'
 gem 'tagsinput-rails-revisited', github: 'andrey-str/tagsinput-rails-revisited'
 

@@ -30,6 +30,9 @@ class PostsController < ApplicationController
     @post.tag_list.add(@tags[:tag_list].split(","))
     @post.save
     @post.user_id = session[:user_id]
+    number = rand(1000).to_s
+    @post.url_mini = "https://picsum.photos/750/300/?image="+number ;
+    @post.url = "https://picsum.photos/960/640/?image="+number ;
     authorize @post
 
 

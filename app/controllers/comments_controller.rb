@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @user = session[:user_id]
     body = comment_params[:body]
     @comment = @post.comments.create(body: body, user_id: @user)
+    @comment.save
     redirect_to post_path(@post)
   end
 
