@@ -1,40 +1,18 @@
-
 <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h1 class="my-4">Dream Blog</h1>
-          <%= render partial: 'sort' %>
-
-<% if @posts.any? %>
-    <%= render partial: 'shared/feed_item', collection: @posts %>
-<% end %>
-
-    <!-- Pagination -->
-              <ul class="pagination justify-content-center mb-4">
-                <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-              </ul>
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="my-4">Dream Blog</h1>
+      <%= render partial: 'sort' %>
+      <% if @posts.any? %>
+        <%= render partial: 'shared/feed_item', collection: @posts %>
+      <% end %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails, class: "pagination justify-content-center mb-4" %>
+    </div>
+    <div class="col-md-4">
+      <%= render partial: 'widget_search'%>
+      <%= render partial: 'widget_categories'%>
+      <%= render partial: 'widget_date'%>
+      <%= render partial: 'widget_time'%>
+    </div>
   </div>
-
-
-  <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-          <!-- Search Widget -->
-          <%= render partial: 'widget_search'%>
-          <!-- Categories Widget -->
-          <%= render partial: 'widget_categories'%>
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
-          <!-- Date Widget -->
-          <%= render partial: 'widget_date'%>
-          <!-- Time Widget -->
-          <%= render partial: 'widget_time'%>
-
-  </div>
-  </div>
-
 </div>

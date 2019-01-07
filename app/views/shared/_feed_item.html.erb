@@ -1,16 +1,15 @@
 <div class="card mb-4">
-            <%= image_tag(feed_item.url_mini, :class => "card-img-top") %>
-
-            <div class="card-body">
-              <h2 class="card-title"><%= feed_item.name %></h2>
-              <% feed_item.tag_list.to_s.split(",").each do |tag| %>
-                <%= link_to tag,"http://localhost:3000?tag="+tag , :name => "tag", :class => "badge badge-success" %>
-              <% end %>
-              <br> <br>
-              <%= link_to "Read more " , post_path(feed_item.id), :class => "btn btn-primary" %>
-            </div>
-            <div class="card-footer text-muted">
-              Posted <%= time_ago_in_words(feed_item.created_at) %> ago by
-              <%= link_to User.find(feed_item.user_id).username , post_path(feed_item.id), :class => "text-secondary" %>
-            </div>
-          </div>
+  <%= image_tag(feed_item.url_mini, :class => "card-img-top") %>
+  <div class="card-body">
+    <h2 class="card-title"><%= feed_item.name %></h2>
+    <% feed_item.tag_list.to_s.split(",").each do |tag| %>
+      <%= link_to tag,"http://localhost:3000?tag="+tag , :name => "tag", :class => "badge badge-success" %>
+    <% end %>
+    <br> <br>
+    <%= link_to "Read more " , post_path(feed_item.id), :class => "btn btn-primary" %>
+  </div>
+  <div class="card-footer text-muted">
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago by
+    <%= link_to User.find(feed_item.user_id).username , post_path(feed_item.id), :class => "text-secondary" %>
+  </div>
+</div>

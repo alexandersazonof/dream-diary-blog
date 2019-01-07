@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -8,15 +7,7 @@ class User < ApplicationRecord
   validate :image_size_validation
 
   attr_accessor :login
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-
-
-
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9]*\z/}
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
@@ -35,11 +26,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.name   # assuming the user model has a name
-      user.icon = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.username = auth.info.name
+      user.icon = auth.info.image
     end
   end
 
@@ -79,7 +67,6 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
   end
-
 
   def feed
     posts

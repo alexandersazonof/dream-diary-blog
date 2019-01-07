@@ -1,19 +1,15 @@
 class HomeController < ApplicationController
 
-  ## Private only
-  #
-  # before_action :authenticate_user:, only: [:private]
   helper_method :sort_direction
-
 
   def index
     @popular_tags = ActsAsTaggableOn::Tag.most_used(6)
     if params[:tag].present?
-      @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page], per_page: 5)
     elsif params[:sort].present?
-      @posts = sort_params(params[:sort]).paginate(:page => params[:page], :per_page => 5)
+      @posts = sort_params(params[:sort]).paginate(:page => params[:page], per_page: 5)
     else
-      @posts = Post.where(vision: true).paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.where(vision: true).paginate(:page => params[:page], per_page: 5)
     end
   end
 
@@ -22,8 +18,8 @@ class HomeController < ApplicationController
 
   def show
     @popular_tags = ActsAsTaggableOn::Tag.most_used(6)
-    user_id = session[:user_id]
-    @my_posts = Post.where(["user_id = ?", user_id])
+    user_id = current_user.id
+    @posts = current_user.posts.paginate(:page => params[:page], per_page: 5)
   end
 
   def search
@@ -33,7 +29,7 @@ class HomeController < ApplicationController
       redirect_to(root_path, alert: "Empty field!") and return
     else
       @parameter = params[:search].downcase
-      @results = Post.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").paginate(:page => params[:page], per_page: 5)
     end
   end
 

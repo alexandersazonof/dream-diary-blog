@@ -2,22 +2,17 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
-    <%= f.input :name, :class => "form-control" %>
-    <%= f.text_area :content, :id =>  "content" %>
-           <br>
-    <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
-    <%= label_tag(:vision, "Access", :class => "mr-sm-2") %>
-    <%= select_tag(:vision, options_for_select([['Public', 1], ['Private', 2]], 1), :class => "custom-select mr-sm-2") %>
-  </div>
-
+    <%= f.input :name, class: "form-control" %>
+    <%= f.text_area :content, id: "content" %>
     <br>
+    <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
+    <%= label_tag(:vision, "Access", class: "mr-sm-2") %>
+    <%= select_tag(:vision, options_for_select([['Public', 1], ['Private', 2]], 1), class: "custom-select mr-sm-2") %>
+  </div>
+  <br>
   <div class="form-group">
-    <%= f.button :submit, :class => "btn btn-primary", :id => "submit" %>
+    <%= f.button :submit, class: "btn btn-primary", id: "submit" %>
   </div>
-
-  </div>
-</div>
-</div>
 <% end %>
 
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->

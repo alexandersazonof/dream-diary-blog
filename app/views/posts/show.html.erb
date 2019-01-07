@@ -1,54 +1,44 @@
-
 <div class="contrainer">
-    <div class="row h-100 justify-content-center align-items-center">
-      <div class="form-group">
-        <h1><%= @post.name %></h1>
-        <div class="col">
-        <span class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
-        <%= link_to User.find(@post.user_id).username , post_path(@post.id), :class => "text-secondary" %></span>
-          <% if @post.user_id == current_user.id %>
-            <%=link_to octicon("pencil"),  edit_post_path(@post) %>
-            <%= link_to octicon("flame"), @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          <br>
-          <% @post.tag_list.to_s.split(",").each do |tag| %>
-            <%= link_to tag,"http://localhost:3000?tag="+tag , :name => "tag", :class => "badge badge-dark" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <hr>
-
   <div class="row h-100 justify-content-center align-items-center">
     <div class="form-group">
-      <%= image_tag(@post.url, :width => "960", :height => "640" ) %>
+      <h1><%= @post.name %></h1>
+      <div class="col">
+        <span class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
+        <%= link_to User.find(@post.user_id).username , post_path(@post.id), class: "text-secondary" %></span>
+        <% if @post.user_id == current_user.id %>
+          <%=link_to octicon("pencil"),  edit_post_path(@post) %>
+          <%= link_to octicon("flame"), @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <br>
+        <% @post.tag_list.to_s.split(",").each do |tag| %>
+          <%= link_to tag,"http://localhost:3000?tag="+tag , name: "tag", class: "badge badge-dark" %>
+        <% end %>
+      </div>
     </div>
   </div>
-
+  <hr>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="form-group">
+      <%= image_tag(@post.url, width: "960", height: "640" ) %>
+    </div>
+  </div>
   <div class="row h-100 justify-content-center align-items-center">
     <div class="form-group">
       <div class="col">
-    <%=raw @post.content %>
-  </div>
+        <%=raw @post.content %>
+      </div>
     </div>
   </div>
-
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
   <div class="container">
-  	<h2 class="text-center"><%= @post.comments.count %> Comments</h2>
+    <h2 class="text-center"><%= @post.comments.count %> Comments</h2>
     <%= render @post.comments %>
     <% if user_signed_in?%>
-    <div class="card-body">
-      <h3> Add comment</h3>
-      <%= render "comments/form" %>
-  </div>
-
+      <div class="card-body">
+        <h3> Add comment</h3>
+        <%= render "comments/form" %>
+      </div>
     <% end %>
-
-
+  </div>
 </div>
 
-
-
-</div>
