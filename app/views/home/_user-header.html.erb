@@ -6,25 +6,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-<<<<<<< HEAD:app/views/home/_user-header.html.erb
-          <%= link_to "My posts", show_path, :class => "nav-link" %>
-        </li>
-      <li class="nav-item">
-          <%= link_to "New post", new_post_path, :class => "nav-link" %>
-        </li>
-=======
-        <a class="nav-link" href="">My posts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">New post</a>
-      </li>
->>>>>>> master:app/views/layouts/_user-header.html.erb
-      <li class="nav-item">
+        <%= link_to "My posts", show_path, :class => "nav-link" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to "New post", new_post_path, :class => "nav-link" %>
+       </li>
+       <li class="nav-item">
         <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
-      </li>
-    </ul>
-    <span class="navbar-text">
-     <%= link_to "Welcome " + current_user.username  , edit_user_registration_path %>
-    </span>
-  </div>
+       </li>
+      </ul>
+      <span class="navbar-text">
+        <%= link_to "Welcome " + current_user.username  , edit_user_registration_path %>
+      </span>
+    </div>
 </nav>
