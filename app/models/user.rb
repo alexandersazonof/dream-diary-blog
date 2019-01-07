@@ -49,6 +49,7 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
   end
+<<<<<<< HEAD
 
 
   def feed
@@ -56,4 +57,6 @@ class User < ApplicationRecord
   end
 
 
+=======
+>>>>>>> master
 end

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <%= render 'home/header' %>
 <%= @lol %>
@@ -12,6 +13,12 @@
 
 <% if @posts.any? %>
     <%= render partial: 'shared/feed_item', collection: @posts %>
+=======
+<% if user_signed_in? %>
+  <%= render 'layouts/user-header' %>
+<% else %>
+  <%= render 'layouts/general-header'  %>
+>>>>>>> master
 <% end %>
 
     <!-- Pagination -->
