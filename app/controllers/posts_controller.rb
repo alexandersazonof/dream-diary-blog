@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.tag_list.add(@tags[:tag_list].split)
     @post.save
-    @post.user_id = session[:user_id]
+    @post.user_id = current_user.id
     authorize @post
 
 
