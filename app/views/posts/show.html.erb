@@ -1,44 +1,31 @@
 <%= render 'home/header' %>
-
 <div class="contrainer">
-    <div class="row h-100 justify-content-center align-items-center">
-      <div class="form-group">
-        <h1><%= @post.name %></h1>
-        <p class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
-        <%= link_to User.find(@post.user_id).username , post_path(@post.id), :class => "text-secondary" %></p>
-
-      </div>
-    </div>
-
   <div class="row h-100 justify-content-center align-items-center">
     <div class="form-group">
-      <%= image_tag("example.jpg", :width => "960", :height => "640" ) %>
+      <h1><%= @post.name %></h1>
+      <p class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
+      <%= link_to User.find(@post.user_id).username , post_path(@post.id), class: "text-secondary" %></p>
     </div>
   </div>
-
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="form-group">
+      <%= image_tag("example.jpg", width: "960", height: "640" ) %>
+    </div>
+  </div>
   <div class="row h-100 justify-content-center align-items-center">
     <div class="form-group">
       <div class="col">
-    <%=raw @post.content %>
-  </div>
+        <%=raw @post.content %>
+      </div>
     </div>
   </div>
-
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
   <div class="container">
-  	<h2 class="text-center"><%= @post.comments.count %> Comments</h2>
+    <h2 class="text-center"><%= @post.comments.count %> Comments</h2>
     <%= render @post.comments %>
-
     <div class="card-body">
-
       <h3> Add comment</h3>
       <%= render "comments/form" %>
+    </div>
   </div>
-
-
-</div>
-
-
-
 </div>

@@ -1,19 +1,12 @@
 class User < ApplicationRecord
-
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   attr_accessor :login
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9]*\z/}
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable,
          omniauth_providers: [:facebook, :linkedin, :twitter]
-
-
+  
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -51,10 +44,7 @@ class User < ApplicationRecord
     end
   end
 
-
   def feed
     posts
   end
-
-
 end
