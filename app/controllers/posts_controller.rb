@@ -17,10 +17,9 @@ class PostsController < ApplicationController
   def edit
     authorize @post
   end
-  binding.pry
+
 
   def create
-
     @post = Post.new(post_params)
     @post.tag_list.add(@tags[:tag_list].split(","))
     @post.save
@@ -46,11 +45,9 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        @post.vision = @vision.to_s =='Public' ? true : false
-
+        @post.vision = vision_params == 'Public' ? true : false
         @post.tag_list = (@tags[:tag_list].split(","))
         @post.save
-        @post.vision = vision_params == 'Public' ? true : false
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
