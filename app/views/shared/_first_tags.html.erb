@@ -1,5 +1,5 @@
 <% @popular_tags.first(3).each do |tag| %>
     <li>
-      <%= link_to tag.to_s,"http://localhost:3000?tag="+tag.to_s , :name => "tag", :class => "badge badge-pill badge-dark" %>
+      <%= link_to tag.to_s,"http://localhost:3000?tag="+tag.to_s , name: "tag", class: "badge badge-pill badge-dark" %>
     </li>
 <% end %>
