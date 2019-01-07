@@ -32,8 +32,8 @@ class PostsController < ApplicationController
     @post.save
     @post.user_id = session[:user_id]
     number = rand(1000).to_s
-    @post.url_mini = "https://picsum.photos/750/300/?image="+number ;
-    @post.url = "https://picsum.photos/960/640/?image="+number ;
+    @post.url_mini = "https://picsum.photos/750/300/?image="+number
+    @post.url = "https://picsum.photos/960/640/?image="+number
     @post.vision = @vision[:vision] == 'Public' ? true : false
     authorize @post
 
@@ -54,8 +54,11 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        @post.vision = @vision[:vision].to_s =='Public' ? true : false
+
         @post.tag_list = (@tags[:tag_list].split(","))
         @post.save
+        @post.vision = @vision[:vision] == 'Public' ? true : false
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
