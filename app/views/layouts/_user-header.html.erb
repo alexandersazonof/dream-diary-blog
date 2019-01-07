@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <%= image_tag("icon.svg", :width => "30", :height => "30", :class => "d-inline-block align-top" ) %>
+    Dream blog
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="">My posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">New post</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+      </li>
+    </ul>
+    <span class="navbar-text">
+     <%= link_to "Welcome " + current_user.username  , edit_user_registration_path %>
+    </span>
+  </div>
+</nav>

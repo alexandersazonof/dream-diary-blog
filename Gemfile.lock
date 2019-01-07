@@ -47,10 +47,16 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    autoprefixer-rails (9.4.3)
+      execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
+    bootstrap (4.1.3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.12.0)
@@ -83,15 +89,24 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     execjs (2.7.0)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.6.0)
     i18n (1.3.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-rails (4.3.3)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jwt (2.1.0)
+    libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -107,13 +122,42 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
+    mini_racer (0.2.4)
+      libv8 (>= 6.3)
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
+    oauth (0.5.4)
+    oauth2 (1.4.1)
+      faraday (>= 0.8, < 0.16.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.9.0)
+      hashie (>= 3.4.6, < 3.7.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-facebook (5.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-linkedin-oauth2 (0.2.5)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.6.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 1.9)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     orm_adapter (0.5.0)
+    popper_js (1.14.5)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -167,6 +211,9 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -180,6 +227,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
+    tether-rails (1.4.0)
+      rails (>= 3.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -208,20 +257,31 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  bootstrap
   byebug
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  execjs
   jbuilder (~> 2.5)
+  jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mini_racer
+  omniauth
+  omniauth-facebook
+  omniauth-linkedin-oauth2
+  omniauth-twitter
+  popper_js
   puma (~> 3.11)
   rails (~> 5.2.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  tether-rails
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
