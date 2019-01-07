@@ -1,12 +1,12 @@
 <%= render 'home/header' %>
 <div class="contrainer">
-    <div class="row h-100 justify-content-center align-items-center">
-      <div class="form-group">
-        <h1><%= @post.name %></h1>
-        <p class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
-        <%= link_to User.find(@post.user_id).username , post_path(@post.id), class: "text-secondary" %></p>
-      </div>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="form-group">
+      <h1><%= @post.name %></h1>
+      <p class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
+      <%= link_to User.find(@post.user_id).username , post_path(@post.id), class: "text-secondary" %></p>
     </div>
+  </div>
   <div class="row h-100 justify-content-center align-items-center">
     <div class="form-group">
       <%= image_tag("example.jpg", width: "960", height: "640" ) %>
@@ -17,6 +17,6 @@
       <div class="col">
         <%=raw @post.content %>
       </div>
-     </div>
     </div>
+  </div>
 </div>
