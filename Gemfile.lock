@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/andrey-str/tagsinput-rails-revisited.git
+  revision: 5f388b5a0701631603fcfb60db52cbe6e8299915
+  specs:
+    tagsinput-rails-revisited (2.0)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -305,6 +312,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  tagsinput-rails-revisited!
   tether-rails
   turbolinks (~> 5)
   tzinfo-data

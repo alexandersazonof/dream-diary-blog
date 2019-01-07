@@ -31,7 +31,9 @@ gem 'faker'
 
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+
 gem 'bootstrap-tagsinput-rails'
+gem 'tagsinput-rails-revisited', github: 'andrey-str/tagsinput-rails-revisited'
 
 gem 'acts-as-taggable-on'
 # for auth

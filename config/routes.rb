@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get '/show', to: 'home#show', as: 'show'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   devise_for :users, controllers: {
 
