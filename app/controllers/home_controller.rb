@@ -13,6 +13,6 @@ class HomeController < ApplicationController
 
   def show
     user_id = current_user.id
-    @my_posts = Post.where( ["user_id = ?", user_id])
+    @my_posts = current_user.posts
   end
 end
