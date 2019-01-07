@@ -7,7 +7,7 @@
     <br>
     <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
     <%= label_tag(:vision, "Access", class: "mr-sm-2") %>
-    <%= select_tag(:vision, options_for_select([['Public', 1], ['Private', 2]], 1), class: "custom-select mr-sm-2") %>
+    <%= select_tag(:vision, options_for_select([['Public', 'Public'], ['Private', 'Private']], 1), class: "custom-select mr-sm-2", name: "vision") %>
   </div>
   <br>
   <div class="form-group">

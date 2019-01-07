@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @user_id = current_user.id
     body = comment_params[:body]
-    @comment = @post.comments.create(body: body, user_id: @user)
+    @comment = @post.comments.create(body: body, user_id: @user_id)
     @comment.save
     redirect_to post_path(@post)
   end

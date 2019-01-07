@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 
+gem 'pry-rails'
+
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 

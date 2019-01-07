@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <h1 class="my-4">My posts</h1>    
       <% if @posts.any? %>
-        <%= render partial: 'shared/feed_item', collection: @my_posts %>
+        <%= render partial: 'shared/feed_item', collection: @posts %>
       <% end %>
       <%= will_paginate @posts, renderer: BootstrapPagination::Rails, class: "pagination justify-content-center mb-4" %>
     </div>
