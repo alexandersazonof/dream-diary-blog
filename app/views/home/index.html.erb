@@ -1,37 +1,16 @@
-<<<<<<< HEAD
-
 <%= render 'home/header' %>
-<%= @lol %>
 <div class="container">
-
       <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-
-          <h1 class="my-4">Dream Blog
-          </h1>
-
-<% if @posts.any? %>
-    <%= render partial: 'shared/feed_item', collection: @posts %>
-=======
-<% if user_signed_in? %>
-  <%= render 'layouts/user-header' %>
-<% else %>
-  <%= render 'layouts/general-header'  %>
->>>>>>> master
-<% end %>
-
-    <!-- Pagination -->
-              <ul class="pagination justify-content-center mb-4">
-                <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-              </ul>
-  </div>
-
-
-  <!-- Sidebar Widgets Column -->
+            <div class="col-md-8">
+                  <h1 class="my-4">Dream Blog</h1>    
+                        <% if @posts.any? %>
+                              <%= render partial: 'shared/feed_item', collection: @posts %>
+                        <% end %>
+                  <ul class="pagination justify-content-center mb-4">
+                        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+                  </ul>
+            </div>
         <div class="col-md-4">
-
-          <!-- Search Widget -->
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
             <div class="card-body">
@@ -43,8 +22,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Categories Widget -->
           <div class="card my-4">
             <h5 class="card-header">Top tags</h5>
             <div class="card-body">
@@ -62,25 +39,17 @@
             </div>
           </div>
         </div>
-
-
-          <!-- Side Widget -->
           <div class="card my-4">
             <h5 class="card-header">Side Widget</h5>
             <div class="card-body">
               You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
             </div>
           </div>
-  </div>
-  </div>
-
-</div>
-
-
-  <!-- Footer -->
+        </div>
+      </div>
+   </div>
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
       </div>
-      <!-- /.container -->
     </footer>
