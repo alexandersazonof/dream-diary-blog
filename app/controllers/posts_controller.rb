@@ -15,13 +15,19 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
+
 
   def create
     @post = Post.new(post_params)
-    @post.tag_list.add(@tags[:tag_list].split)
+    @post.tag_list.add(@tags[:tag_list].split(","))
     @post.save
     @post.user_id = current_user.id
+    number = rand(1000).to_s
+    @post.url_mini = "https://picsum.photos/750/300/?image="+number
+    @post.url = "https://picsum.photos/960/640/?image="+number
+    @post.vision = vision_params == 'Public' ? true : false
     authorize @post
 
 
@@ -39,7 +45,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        @post.tag_list.add(@tags[:tag_list].split)
+        @post.vision = vision_params == 'Public' ? true : false
+        @post.tag_list = (@tags[:tag_list].split(","))
         @post.save
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
@@ -51,9 +58,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,10 +72,14 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-  
+
     def post_params
       @tags = params.require(:post).permit(:tag_list)
       params.require(:post).permit(:name, :content)
+    end
+
+    def vision_params
+      params[:vision]
     end
 
 end

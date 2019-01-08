@@ -1,10 +1,8 @@
-<% if !user_signed_in? %>
-  <% controller.redirect_to root_path %>
-<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h1 class="my-4">My posts</h1>    
+      <h1 class="my-4">Results</h1>
+      <%= render partial: 'sort' %>
       <% if @posts.any? %>
         <%= render partial: 'shared/feed_item', collection: @posts %>
       <% end %>
@@ -18,4 +16,3 @@
     </div>
   </div>
 </div>
-    

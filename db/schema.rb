@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_142053) do
+ActiveRecord::Schema.define(version: 2019_01_07_124612) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2019_01_05_142053) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
+    t.string "url_mini"
+    t.boolean "vision", default: true
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -71,6 +74,10 @@ ActiveRecord::Schema.define(version: 2019_01_05_142053) do
     t.string "linkedin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image", default: "https://image.ibb.co/jw55Ex/def_face.jpg"
+    t.text "icon"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

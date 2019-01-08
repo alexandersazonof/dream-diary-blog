@@ -1,10 +1,11 @@
 class PostPolicy < ApplicationPolicy
+
   def index?
     true
   end
 
   def edit?
-    false
+    user.present? && user.id == article.user_id
   end
 
   def create?
