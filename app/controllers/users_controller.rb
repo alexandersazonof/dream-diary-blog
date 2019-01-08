@@ -33,10 +33,11 @@ class UsersController < ApplicationController
   end
 
   def post_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :icon)
   end
 
   def id
     params[:id]
   end
+
 end

@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= image_tag(user.image, width: "100", height: "100" )%>
+    <%= image_tag(user.get_avatar , width: "100", height: "100" )%>
     <a href="#" class="user-link"><%= user.username %></a>
   </td>
   <td><%= user.created_at %></td>
