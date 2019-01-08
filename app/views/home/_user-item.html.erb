@@ -11,7 +11,7 @@
         <%= user.email %>
     </td>
     <td>
-      <i><%= user.posts.count %></i>
+      <a href="mypost?id=<%= user.id %>" ><i><%= user.posts.count %></i></a>
     </td>
     <td>
       <%= user.comments.count %>

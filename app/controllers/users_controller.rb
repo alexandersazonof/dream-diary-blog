@@ -27,14 +27,14 @@ class UsersController < ApplicationController
 
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
 
   private
-  def set_user  
+  def set_user
     @user = User.find(id)
   end
 

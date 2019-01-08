@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   get '/show', to: 'home#show', as: 'show'
   get '/search', to: 'home#search', as: 'search'
   get '/users', to: "home#users", as: "users"
+  get '/mypost', to: "home#mypost", as: "mypost"
 
   resources :posts do
     resources :comments
   end
-
-
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
