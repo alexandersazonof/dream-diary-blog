@@ -52,14 +52,11 @@ class HomeController < ApplicationController
     if value == "author"
       @posts = Post.all.order('name ASC')
     elsif value == "date"
-      @posts = Post.all.order('created_at #{sort_direction}')
+      @posts = Post.all.order('created_at DESC').reverse_order
     else
-      @posts = Post.order('created_at ASC').reverse_order
+      @posts = Post.all.order('vision ASC')
     end
   end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-  end
 
 end

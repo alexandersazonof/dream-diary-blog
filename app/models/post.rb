@@ -7,4 +7,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
 
+
+  def status
+    self.vision == true ? "public" : "private"
+  end
+
 end
