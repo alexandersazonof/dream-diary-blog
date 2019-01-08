@@ -5,7 +5,7 @@
       <div class="col">
         <span class="text-secondary">Posted <%= time_ago_in_words(@post.created_at) %> ago by
         <%= link_to User.find(@post.user_id).username , post_path(@post.id), class: "text-secondary" %></span>
-        <% if @post.user_id == current_user.id %>
+        <% if @post.user_id == current_user.id || current_user.is_admin %>
           <%=link_to octicon("pencil"),  edit_post_path(@post) %>
           <%= link_to octicon("flame"), @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>

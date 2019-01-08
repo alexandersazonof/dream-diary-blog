@@ -3,14 +3,17 @@ Rails.application.routes.draw do
 
   get '/show', to: 'home#show', as: 'show'
   get '/search', to: 'home#search', as: 'search'
+  get '/users', to: "home#users", as: "users"
 
   resources :posts do
     resources :comments
   end
 
+
+
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-
+  resources :users, :only => [:edit, :update, :destroy ]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

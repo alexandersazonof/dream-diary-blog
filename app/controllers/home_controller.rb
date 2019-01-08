@@ -33,6 +33,11 @@ class HomeController < ApplicationController
     end
   end
 
+  def users
+    @users = User.all.paginate(:page => params[:page], per_page: 10)
+  end
+
+
   private
   def sort_params(value)
     if value == "author"

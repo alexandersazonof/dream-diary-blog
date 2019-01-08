@@ -12,6 +12,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  def is_admin
+    self.role == "admin" ? true : false;
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
