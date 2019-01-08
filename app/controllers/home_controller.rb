@@ -34,6 +34,9 @@ class HomeController < ApplicationController
   end
 
   def users
+    if !current_user.is_admin?
+      redirect_to root_path
+    end
     @users = User.all.paginate(:page => params[:page], per_page: 10)
   end
 

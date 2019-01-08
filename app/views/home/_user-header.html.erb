@@ -17,7 +17,7 @@
   </ul>
   <span class="navbar-text">
     <%= image_tag(current_user.get_avatar, width: "30", height: "30") %>
-    <%= link_to current_user.username  , edit_user_registration_path %>
+    <%=link_to current_user.username,  edit_user_path(current_user) %>
    </span>
   </div>
 </nav>

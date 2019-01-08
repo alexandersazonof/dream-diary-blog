@@ -1,4 +1,4 @@
-<h2 class="text-center">Edit <%= @user.username %></h2>
+<h2 class="text-center">Edit user <%= @user.username %></h2>
 <hr>
 <%= simple_form_for(@user) do |f| %>
   <div class="form-group">
@@ -20,6 +20,7 @@
         <%= f.input :icon, as: :file %>
       </div>
     </div>
+
     <div class="actions">
       <%= f.submit "Update", class: "btn btn-primary mb-2" %>
     </div>
