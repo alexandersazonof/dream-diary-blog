@@ -33,6 +33,17 @@ class HomeController < ApplicationController
     end
   end
 
+  def users
+    @users = User.all.paginate(:page => params[:page], per_page: 10)
+  end
+
+  def mypost
+    @popular_tags = ActsAsTaggableOn::Tag.most_used(6)
+    id = params[:id].to_i
+    @posts = User.find(id).posts.paginate(:page => params[:page], per_page: 5)
+  end
+
+
   private
   def sort_params(value)
     if value == "author"

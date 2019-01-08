@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= image_tag(user.image, width: "100", height: "100" )%>
+    <a href="#" class="user-link"><%= user.username %></a>
+  </td>
+  <td><%= user.created_at %></td>
+  <td class="text-center">
+    <span class="label label-default"><%= user.role %></span>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
+  <td>
+    <a href="mypost?id=<%= user.id %>" ><i><%= user.posts.count %></i></a>
+  </td>
+  <td>
+    <%= user.comments.count %>
+  </td>
+  <td>
+    <%=link_to octicon("pencil"),  edit_user_path(user) %>
+    <%= link_to octicon("flame"), user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

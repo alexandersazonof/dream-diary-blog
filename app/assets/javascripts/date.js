@@ -1,6 +1,4 @@
-
-$(document).ready(function () {
-    // create DateTimePicker from input HTML element
+$(document).on("turbolinks:load", function (){
     $("#datetimepicker").kendoDateTimePicker({
         value: new Date(),
         dateInput: true

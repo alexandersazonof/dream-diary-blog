@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="my-4">Posts <%= @posts.first.user.username %></h1>
+      <%= render partial: 'sort' %>
+      <% if @posts.any? %>
+        <%= render partial: 'shared/feed_item', collection: @posts %>
+      <% end %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails, class: "pagination justify-content-center mb-4" %>
+    </div>
+    <div class="col-md-4">
+      <%= render partial: 'widget_search'%>
+      <%= render partial: 'widget_categories'%>
+      <%= render partial: 'widget_date'%>
+      <%= render partial: 'widget_time'%>
+    </div>
+  </div>
+</div>
