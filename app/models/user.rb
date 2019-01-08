@@ -13,7 +13,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[facebook]
 
   def is_admin?
-    self.role == "admin";
+    self.role == "admin"
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
