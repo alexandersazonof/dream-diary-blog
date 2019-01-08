@@ -3,16 +3,13 @@ class UsersController < ApplicationController
 
 
   def edit
-    if !current_user.is_admin
-      redirect_to user_path
-    end
-    @user
+    authorize @user
   end
 
   def update
+    authorize @user
     respond_to do |format|
       if @user.update(post_params)
-        @user.save
         format.html { redirect_to users_path, notice: 'User was successfully updated.' }
       else
         format.html { render :edit }
@@ -21,11 +18,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if !current_user.is_admin
-      redirect_to user_path
-    end
-
-    @user.destroy
+    authorize @user.destroy
     respond_to do |format|
       format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }

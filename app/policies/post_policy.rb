@@ -5,7 +5,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.present? && (user.id == article.user_id || user.is_admin)
+    user.present? && (user.id == article.user_id || user.is_admin?)
   end
 
   def create?
@@ -13,11 +13,11 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && (user.id == article.user_id || user.is_admin)
+    user.present? && (user.id == article.user_id || user.is_admin?)
   end
 
   def destroy?
-    user.present? && (user.id == article.user_id || user.is_admin)
+    user.present? && (user.id == article.user_id || user.is_admin?)
   end
 
   private

@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.is_admin %>
+<% if user_signed_in? && current_user.is_admin? %>
   <%= render 'home/admin-header' %>
 <% elsif user_signed_in?  %>
   <%= render 'home/user-header' %>
