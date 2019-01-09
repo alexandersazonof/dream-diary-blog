@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     number = rand(1000).to_s
     @post.url_mini = "https://picsum.photos/750/300/?image="+number
     @post.url = "https://picsum.photos/960/640/?image="+number
-    @post.vision = vision_params == 'Public' ? true : false
+    @post.vision = visibility == 'Public' ? true : false
     authorize @post
 
 
@@ -43,9 +43,10 @@ class PostsController < ApplicationController
   end
 
   def update
+    binding.pry
     respond_to do |format|
       if @post.update(post_params)
-        @post.vision = vision_params == 'Public' ? true : false
+        @post.vision = visibility == 'Public' ? true : false
         @post.tag_list = (@tags[:tag_list].split(","))
         @post.save
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -78,8 +79,8 @@ class PostsController < ApplicationController
       params.require(:post).permit(:name, :content)
     end
 
-    def vision_params
-      params[:vision]
+    def visibility
+      params[:visibility]
     end
 
 end
