@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery3
 //= require jquery_ujs
 //= require popper
@@ -21,6 +20,7 @@
 //= require content/body
 //= require chosen-jquery
 //= require bootstrap-tagsinput
-//= require time
 //= require date
+//= require kendo.all.min.js
+//= require shieldui-all.min.js
 //= require_tree .

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy 
 
   mount_uploader :icon, ImageUploader
   validates_processing_of :icon
@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   def is_admin?
     self.role == "admin"
+  end
+
+  def get_avatar
+    self.icon.url == nil ? self.image : self.icon.url
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)

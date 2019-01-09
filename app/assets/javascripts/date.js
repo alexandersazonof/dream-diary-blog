@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function (){
+$(document).ready(function() {
     $("#datetimepicker").kendoDateTimePicker({
         value: new Date(),
         dateInput: true
