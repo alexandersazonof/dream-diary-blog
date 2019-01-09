@@ -21,6 +21,6 @@
 //= require content/body
 //= require chosen-jquery
 //= require bootstrap-tagsinput
-//= require time
 //= require date
+//= require kendo.all.min.js
 //= require_tree .
